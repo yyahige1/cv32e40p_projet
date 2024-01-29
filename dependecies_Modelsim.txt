@@ -1,0 +1,6 @@
+
+apt-get update
+sudo apt-get install libxft2 libxft2:i386 lib32ncurses5
+sudo apt install libxext6
+sudo apt install libxext6:i386
+sudo apt install lib32ncurses6

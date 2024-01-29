@@ -1,0 +1,20 @@
+echo "Sourcing Questa configuration file"
+source ~/settings/settings_questa_sim_2021_3.sh
+echo "Questa Configuration file sourced"
+export HOME_PROJECT="/tp-fmr/xph3app605/Projet_RiscV/core-v-verif"
+export CV_CORE="cv32e40p"
+export CV_SIMULATOR="/softslin/questa_core_prime_2021_3/questasim/linux/vsim"
+export CV_SW_PREFIX="riscv64-unknown-elf-"
+export CV_SW_TOOLCHAIN="/softslin/riscV_tools/riscV"
+echo "CV_CORE: $CV_CORE"
+echo "CV_SIMULATOR: $CV_SIMULATOR"
+echo "CV_SW_PREFIX: $CV_SW_PREFIX"
+echo "CV_SW_TOOLCHAIN: $CV_SW_TOOLCHAIN"
+export UVM_HOME="/tp-fmr/xph3app605/Projet_RiscV/core-v-verif/core-v-cores/cv32e40s/sva/uvm-1.2/src"
+export SIM_DIR="/tp-fmr/xph3app605/Projet_RiscV/core-v-verif/cv32e40p/sim"
+export CORE_DIR="$SIM_DIR/core"
+export CORE_V_VERIF="/tp-fmr/xph3app605/Projet_RiscV/core-v-verif"
+export CV_CORE_LC=$CV_CORE
+echo "Changing to directory $CORE_DIR"
+cd $CORE_DIR
+ls
