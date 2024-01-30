@@ -18,7 +18,7 @@
 
 -->
 
-# core-v-verif
+# Cv32e40p_projet
 Functional verification project for the CORE-V family of RISC-V cores.
 
 <!--
@@ -60,9 +60,9 @@ To run CVA6 testbench, go to [cva6](cva6) directory and read the README.
 Various utilities for running tests and performing various verification-related activities in the core-v-verif repository.
 
 ### core-v-cores
-Empty sub-directory into which the RTL from one or more of the [CORE-V-CORES](https://github.com/openhwgroup/core-v-cores) repositories is cloned.
+Sub-directoy containing the RTL implementation for the cv32e40p core.
 
-### cv32e40p, cv32e40x, cv32e40s, cva6
+### Cv32e40p
 Core-specific verification code.
 
 ### docs
