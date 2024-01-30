@@ -86,10 +86,34 @@ always_comb begin
     end
     end else begin  // STORE TRANSACTION 
           // Cache line is empty, write data
+	  // Note for coherence policy : If WT policy is chosen, then write the data to the memory for each store transaction
+	    // if WB policy is chosen then initiate a memory store transaction only during eviction (that is FIFO replacement). 
+        if (!cache_valid[index]) begin
+          // Cache line is empty, write data
           cache_data[index] <= data_wdata_i;
           cache_tag[index] <= data_addr_i[31:10];
           cache_valid[index] <= 1'b1;
-         $display("Store transaction: data written: 0x%08x at index: %d",cache_data[index], index);
+         
+          // Print cache miss message
+          $display("Cache miss at index %d", index);
+          $display("Store transaction: data written: 0x%08x",cache_data[index]);
+        end else begin
+          // Cache line is occupied, use FIFO replacement
+          cache_data[index] <= data_wdata_i;
+          cache_tag[index] <= data_addr_i[31:10];
+          cache_valid[index] <= 1'b1;
+          $display("FIFO replacement data written: 0x%08x",cache_data[index]);
+          // Increment the FIFO counter (head)
+          cache_fifo_head <= (cache_fifo_head == 1023) ? 0 : (cache_fifo_head + 1);
+
+          // Invalidate the cache line pointed by the FIFO counter
+          cache_valid[cache_fifo_head] <= 1'b0;
+
+          // Print cache miss message
+          $display("Cache miss at index %d (FIFO replacement)", cache_fifo_head);
+        end
+      end
+    end
     end
 end
 end
