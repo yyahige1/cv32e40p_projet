@@ -101,13 +101,16 @@ to run the ADD IMMEDIATE test from riscv_tests:
 -->
 
 If you have a C or assembly program in `../../tests/programs/custom`
-then the following _should_ work with Questa (note that this
-has not been tested):<br>
+then the following _should_ work with Questa :<br>
 ```
 make questa-test TEST=hello-world
 make questa-test TEST=dhrystone
 make questa-test TEST=coremark
 make questa-test TEST=fibonacci
+```
+To use the graphical interface of modelsim run the following command :<br>
+```
+make questa-custom-gui
 ```
 
 Running the testbench with VCS (vcs)
