@@ -1,7 +1,7 @@
 
 **tb_riscv**
 
-This folder contains a Verilog testbench for the riscv processor.
+This folder contains a Verilog testbench for the riscv processor and instantiates the random perturbation modules.
 
 **cache.sv**
 
