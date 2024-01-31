@@ -88,7 +88,10 @@ always_comb begin
           // Cache line is empty, write data
 	  // Note for coherence policy : If WT policy is chosen, then write the data to the memory for each store transaction
 	    // if WB policy is chosen then initiate a memory store transaction only during eviction (that is FIFO replacement). 
-        if (!cache_valid[index]) begin
+	    // To send a store request to the memory, you need to set the req and data_we signals with data_be set to the desired
+	    // number of bytes. The data has been succesfully stored to memory if ram's data_rvalid signal is set to 1.
+	    // Data to be written correspond to cache_data[index] and address to cache_tag[index].
+	    if (!cache_valid[index]) begin
           // Cache line is empty, write data
           cache_data[index] <= data_wdata_i;
           cache_tag[index] <= data_addr_i[31:10];
